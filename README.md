@@ -15,5 +15,7 @@
 주최 : DACON
 주관 : DACON
 
-## 결과: KoBERT 모델을 사용해 PUBLIC 21/256 PRIVATE 11/256의 성적을 거둠.(상위 5%)
-사용 코드: 
+<hr>
+
+### 결과: KoBERT 모델을 사용해 PUBLIC 21/256 PRIVATE 11/256의 성적을 거둠.(상위 5%)
+사용 코드: News_Topic_Classification_KoBERT.ipynb
