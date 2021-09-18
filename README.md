@@ -17,5 +17,5 @@
 
 <hr>
 
-### 결과: KoBERT 모델을 사용해 PUBLIC 21/256 PRIVATE 11/256의 성적을 거둠.(상위 5%)
+### 결과: KoBERT, KoERECTRA, KcELECTRA 모델을 써서 성능 비교한 결과, KoBERT 모델의 성능이 가장 좋아 KoBERT모델을 사용해 PUBLIC 21/256 PRIVATE 11/256의 성적을 거둠.(상위 5%)
 사용 코드: News_Topic_Classification_KoBERT.ipynb
