@@ -1,23 +1,44 @@
-# Dacon_News_Topic_Classification
+# Dacon 뉴스 토픽 분류 AI 경진대회
 
-## 1.주제
+한국어 뉴스 헤드라인으로 기사의 주제를 7가지로 분류하는 DACON 대회 참가 코드입니다. 데이터는 KLUE 벤치마크의 YNAT(연합뉴스 헤드라인 주제 분류) 데이터셋입니다.
 
-한국어 📰뉴스 헤드라인을 이용하여, 뉴스의 주제를 분류하는 알고리즘 개발
+## 결과
 
+KoBERT, KoELECTRA, KcELECTRA 세 모델을 같은 조건으로 비교했고, KoBERT가 가장 좋아 최종 제출에 사용했습니다.
 
-## 2. 배경
+- **Public 21 / 256, Private 11 / 256 (상위 5%)**
+- 최종 코드: `News_Topic_Classification_KoBERT.ipynb`
 
-텍스트 주제를 추론하는 것은 언어 이해 시스템이 보유해야 하는 핵심 기능입니다. YNAT(주제 분류를 위한 연합뉴스 헤드라인) 데이터 세트를 활용해 주제 분류 알고리즘을 개발해 주세요.
-국내 최초 오픈 데이터 세트인 KLUE(Korean Language Understanding Evaluation) 데이터 세트를 이용하여 다양한 언어 모델의 성능을 비교해 한국어 자연어처리 분야의 발전에 기여할 것으로 예상합니다.
+![leaderboard](https://user-images.githubusercontent.com/68273065/149282191-a17e998a-5529-43f1-a8fe-0756bfe32ad2.png)
 
-## 3. 주최 / 주관
+## 노트북 구성
 
-주최 : DACON
-주관 : DACON
+| 파일 | 모델 |
+|---|---|
+| `News_Topic_Classification_KoBERT.ipynb` | SKT KoBERT (최종 제출) |
+| `News_Topic_Classification_KoELECTRA.ipynb` | KoELECTRA |
+| `News_Topic_Classification_KcELECTRA.ipynb` | KcELECTRA |
 
-<hr>
+## KoBERT 학습 설정
 
-### 결과: KoBERT, KoERECTRA, KcELECTRA 모델을 써서 성능 비교한 결과, KoBERT 모델의 성능이 가장 좋아 KoBERT모델을 사용해 PUBLIC 21/256 PRIVATE 11/256의 성적을 거둠.(상위 5%)
-최종 사용 코드: News_Topic_Classification_KoBERT.ipynb
+| 항목 | 값 |
+|---|---|
+| 최대 길이 | 64 토큰 |
+| 배치 | 32 |
+| epoch | 10 |
+| 학습률 | 4e-5 (AdamW) |
+| 스케줄러 | cosine + warmup 10% |
+| 분류기 | [CLS] 출력(768) → 드롭아웃 0.5 → Linear(7) |
+| 기타 | gradient clipping |
 
-![image](https://user-images.githubusercontent.com/68273065/149282191-a17e998a-5529-43f1-a8fe-0756bfe32ad2.png)
+## 실행
+
+Google Colab GPU 환경에서 노트북을 위에서부터 순서대로 실행합니다. 마지막 셀에서 제출용 CSV를 저장합니다. 저장 경로는 본인 Google Drive 경로에 맞게 바꿔야 합니다.
+
+## 기술 스택
+
+Python, PyTorch, KoBERT, KoELECTRA, KcELECTRA, transformers, Google Colab
+
+## 주최
+
+DACON
